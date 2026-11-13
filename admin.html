@@ -1,0 +1,2854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RZMT — Careers & Admin Portal</title>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MXFC2WXR');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0XG3P1K1S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D0XG3P1K1S', {
+      'send_page_view': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+  </script>
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png?v=4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png?v=4">
+  <link rel="icon" type="image/png" sizes="512x512" href="/static/images/favicon.png?v=4">
+  <link rel="shortcut icon" href="/static/images/favicon.ico?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://elfsightcdn.com" crossorigin>
+  <link rel="dns-prefetch" href="https://elfsightcdn.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563EB;
+      --primary-hover: #1D4ED8;
+      --primary-subtle: #EFF6FF;
+      --primary-line: #DBEAFE;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --border: #E2E8F0;
+      --border-focus: #93C5FD;
+      --danger: #EF4444;
+      --danger-subtle: #FEF2F2;
+      --success: #10B981;
+      --success-subtle: #ECFDF5;
+      --warning: #F59E0B;
+      --warning-subtle: #FFFBEB;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(15,23,42,0.06);
+      --shadow-md: 0 4px 16px rgba(15,23,42,0.08);
+      --shadow-lg: 0 12px 32px rgba(15,23,42,0.12);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Nav */
+    .admin-navbar {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo {
+      height: 30px;
+      width: auto;
+      object-fit: contain;
+    }
+    .portal-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--primary-subtle);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--primary-line);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .btn-link:hover {
+      color: var(--primary);
+    }
+    .btn-outline {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-main);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: var(--danger);
+      color: var(--danger);
+      background: var(--danger-subtle);
+    }
+
+    /* Main Container */
+    .main-wrap {
+      max-width: 1240px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+      flex: 1;
+    }
+
+    /* Login Screen */
+    .login-container {
+      max-width: 420px;
+      margin: 60px auto;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+    .login-logo {
+      height: 38px;
+      margin-bottom: 20px;
+    }
+    .login-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .login-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--text-main);
+      outline: none;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
+    .form-textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      min-height: 80px;
+      color: var(--text-main);
+      resize: vertical;
+      outline: none;
+    }
+    .form-textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
+    .btn-primary {
+      width: 100%;
+      padding: 11px 20px;
+      background: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+    .btn-primary.w-auto {
+      width: auto;
+    }
+    .alert-error {
+      background: var(--danger-subtle);
+      border: 1px solid #FECACA;
+      color: var(--danger);
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    /* Dashboard Header & Stats */
+    .dashboard-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .dash-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+    .dash-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .stat-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 6px;
+    }
+
+    /* Tabs */
+    .tabs-bar {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      color: var(--primary);
+    }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* Openings List */
+    .card-panel {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .panel-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .panel-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th {
+      background: #F8FAFC;
+      padding: 12px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 16px 20px;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover td {
+      background: #FAFCFF;
+    }
+
+    /* Status Pills */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .status-pill.status-submitted {
+      background: var(--primary-subtle);
+      color: var(--primary);
+      border: 1px solid var(--primary-line);
+    }
+    .status-pill.status-review {
+      background: #FEF3C7;
+      color: #D97706;
+      border: 1px solid #FDE68A;
+    }
+    .status-pill.status-shortlisted {
+      background: #F3E8FF;
+      color: #7E22CE;
+      border: 1px solid #E9D5FF;
+    }
+    .status-pill.status-interview {
+      background: #ECFDF5;
+      color: #059669;
+      border: 1px solid #A7F3D0;
+    }
+    .status-pill.status-offer {
+      background: #DCFCE7;
+      color: #16A34A;
+      border: 1px solid #BBF7D0;
+    }
+    .status-pill.status-rejected {
+      background: #F1F5F9;
+      color: #64748B;
+      border: 1px solid #CBD5E1;
+    }
+
+    .select-status {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      background: #FFFFFF;
+      cursor: pointer;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .select-status:focus {
+      border-color: var(--primary);
+    }
+
+    .btn-action-icon {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .btn-action-icon:hover {
+      color: var(--danger);
+      background: var(--danger-subtle);
+    }
+
+    /* Interactive Pipeline Chips */
+    .app-chip {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .app-chip:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .app-chip.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+      box-shadow: 0 2px 6px rgba(37,99,235,0.25);
+    }
+
+    /* Action Buttons */
+    .btn-edit-action {
+      padding: 5px 12px;
+      font-size: 12.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid var(--primary-line);
+      background: #FFFFFF;
+      color: var(--primary);
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .btn-edit-action:hover {
+      background: var(--primary-subtle);
+      border-color: var(--primary);
+    }
+    .btn-delete-action {
+      padding: 5px 10px;
+      font-size: 12.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #FECACA;
+      background: #FEF2F2;
+      color: var(--danger);
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .btn-delete-action:hover {
+      background: #FEE2E2;
+      border-color: var(--danger);
+    }
+
+    /* Modal Backdrop */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open {
+      display: flex;
+    }
+    .modal-card {
+      background: #FFFFFF;
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 620px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      animation: modalFadeIn 0.25s ease-out;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+    }
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      background: #F8FAFC;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      z-index: 999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Website Visitor & Attraction Analytics Styles */
+    .visitor-analytics-panel {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+      border: 1px solid #CBD5E1;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+      padding: 24px 28px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .visitor-panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .visitor-live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 10px;
+      background: #ECFDF5;
+      color: #047857;
+      border: 1px solid #A7F3D0;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .live-dot-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: livePulse 1.8s infinite;
+    }
+    @keyframes livePulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    .visitor-section-heading {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 4px;
+      letter-spacing: -0.01em;
+    }
+    .visitor-section-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+      max-width: 680px;
+    }
+    .visitor-panel-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-refresh-stats, .btn-toggle-visitor-logs {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-refresh-stats {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+    .btn-refresh-stats:hover {
+      background: #F1F5F9;
+      border-color: #94A3B8;
+    }
+    .btn-toggle-visitor-logs {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      color: #1D4ED8;
+    }
+    .btn-toggle-visitor-logs:hover {
+      background: #DBEAFE;
+      color: #1E40AF;
+    }
+    .visitor-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .vstat-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      position: relative;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .vstat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.07);
+    }
+    .vstat-card-attracted {
+      background: linear-gradient(135deg, #F0FDF4 0%, #FFFFFF 100%);
+      border: 1.5px solid #86EFAC;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.12);
+    }
+    .attracted-badge-ribbon {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #047857;
+      background: #D1FAE5;
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+    .vstat-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .bg-blue-subtle { background: #EFF6FF; }
+    .bg-indigo-subtle { background: #EEF2FF; }
+    .bg-emerald-subtle { background: #D1FAE5; }
+    .bg-purple-subtle { background: #F5F3FF; }
+    .vstat-meta {
+      flex: 1;
+      min-width: 0;
+    }
+    .vstat-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .vstat-number {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+      margin: 4px 0 3px;
+      letter-spacing: -0.02em;
+    }
+    .text-emerald {
+      color: #059669;
+    }
+    .vstat-foot {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: block;
+      line-height: 1.4;
+    }
+    .vstat-prog-track {
+      width: 100%;
+      height: 6px;
+      background: #E2E8F0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 6px 0;
+    }
+    .vstat-prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #7C3AED, #2563EB);
+      border-radius: 999px;
+      transition: width 0.6s ease;
+    }
+    .visitor-secondary-bar {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--text-main);
+      flex-wrap: wrap;
+    }
+    .vsec-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .vsec-title {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .vsec-divider {
+      width: 1px;
+      height: 16px;
+      background: #CBD5E1;
+    }
+    .top-pages-pills {
+      display: inline-flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .top-page-tag {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .attraction-reason-badge {
+      display: inline-block;
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      color: #166534;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      margin: 2px 3px 2px 0;
+    }
+    .visitor-stats-grid-5 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .ip-code-badge {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      font-weight: 700;
+      background: #F1F5F9;
+      color: #0F172A;
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid #CBD5E1;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-copy-ip {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 2px;
+      color: #64748B;
+      display: inline-flex;
+      align-items: center;
+      transition: color 0.15s;
+    }
+    .btn-copy-ip:hover {
+      color: #2563EB;
+    }
+    .status-online-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      background: #ECFDF5;
+      color: #059669;
+      border: 1px solid #A7F3D0;
+      white-space: nowrap;
+    }
+    .status-offline-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #F8FAFC;
+      color: #64748B;
+      border: 1px solid #E2E8F0;
+      white-space: nowrap;
+    }
+    .online-beacon-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: livePulse 1.6s infinite;
+    }
+    .offline-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #94A3B8;
+    }
+    .page-route-tag {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #DBEAFE;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .btn-autorefresh-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 13px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid #A7F3D0;
+      background: #ECFDF5;
+      color: #047857;
+      transition: all 0.2s;
+    }
+    .btn-autorefresh-toggle.paused {
+      background: #F1F5F9;
+      border-color: #CBD5E1;
+      color: #64748B;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXFC2WXR"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Top Navigation -->
+  <header class="admin-navbar">
+    <div class="nav-brand">
+      <img src="static/images/logo-transparent.png" alt="RZMT Logo" class="nav-logo">
+      <span class="portal-badge">Careers Admin</span>
+      <span id="dbBadge" style="font-size:11px; font-weight:600; background:#ECFDF5; color:#065F46; border:1px solid #A7F3D0; padding:3px 8px; border-radius:6px; display:inline-flex; align-items:center; gap:5px;">
+        <span style="width:6px; height:6px; border-radius:50%; background:#10B981;"></span>
+        <span>System Online</span>
+      </span>
+    </div>
+    <div class="nav-actions">
+      <a href="/" class="btn-link">← View Website</a>
+      <div id="authActions" style="display:none; align-items:center; gap:12px;">
+        <span style="font-size:13px; font-weight:600; color:var(--text-muted);">Admin Logged In</span>
+        <button id="btnLogout" class="btn-outline">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Area -->
+  <main class="main-wrap">
+    
+    <!-- Login Screen (shown when logged out) -->
+    <div id="loginSection" class="login-container" style="display:none;">
+      <img src="static/images/logo-transparent.png" alt="RZMT" class="login-logo">
+      <h2 class="login-title">Admin Portal Login</h2>
+      <p class="login-sub">Manage job openings and candidate applications</p>
+
+      <div id="loginError" class="alert-error"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" for="txtUsername">Username or Admin Email</label>
+          <input type="text" id="txtUsername" class="form-input" placeholder="Enter username or email" required autofocus>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="txtPassword">Password</label>
+          <input type="password" id="txtPassword" class="form-input" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-primary" id="btnSubmitLogin">
+          <span>Sign In as Admin</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Admin Dashboard (shown when logged in) -->
+    <div id="dashboardSection" style="display:none;">
+
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <!-- TOP EXECUTIVE COMMAND BAR & LIVE DATA METRICS                    -->
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <div class="dashboard-header" style="align-items:center; margin-bottom:20px;">
+        <div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px;">
+            <div class="visitor-live-pill" style="background:#F0FDF4; border:1px solid #BBF7D0; color:#166534;">
+              <span class="live-dot-pulse" style="background:#22C55E;"></span>
+              <span>LIVE ANALYTICS</span>
+            </div>
+            <div class="status-online-pill" id="headerOnlinePill">
+              <span class="online-beacon-pulse"></span>
+              <span><strong id="statOnlineNowHeader">0</strong> Active Online Now</span>
+            </div>
+          </div>
+          <h1 class="dash-title">Website Analytics & Admin Portal</h1>
+          <p class="dash-subtitle">Real-time visitor activity alongside candidate profiles and recruitment management.</p>
+          <div id="inlineStatusNote" style="display:none; margin-top:6px; font-size:12.5px; font-weight:600; color:#059669;"></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+          <a href="/api/admin/export/ga-realtime-csv" class="btn-outline" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;" title="Export current realtime metrics to CSV">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Live Data CSV</span>
+          </a>
+          <a href="/api/admin/export/users-csv" class="btn-outline" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;" title="Export registered candidates to CSV">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Users CSV</span>
+          </a>
+          <!-- Live Tracking Toolbar Controls -->
+          <div style="display:flex; align-items:center; gap:8px; background:#F8FAFC; border:1px solid var(--border); border-radius:8px; padding:4px 8px;">
+            <button class="btn-autorefresh-toggle" id="btnToggleAutoRefresh" title="Click to pause/resume live tracking" style="border:none; padding:4px 6px; background:transparent;">
+              <span class="online-beacon-pulse" id="pulseAutoRefresh"></span>
+              <span id="textAutoRefresh" style="font-weight:700;">LIVE (<span id="countSecsDisplay">10s</span>)</span>
+            </button>
+            <select id="selectRefreshInterval" class="form-input" style="padding:4px 6px; font-size:12px; height:auto; width:auto; border-radius:6px; background:#FFFFFF;" title="Live sync frequency">
+              <option value="5">5s (Rapid)</option>
+              <option value="10" selected>10s</option>
+              <option value="15">15s</option>
+              <option value="30">30s</option>
+              <option value="0">Pause</option>
+            </select>
+            <button class="btn-action-icon" id="btnToggleSound" title="Toggle sound alerts on new application" style="padding:4px 6px; font-size:13px;">
+              <span id="soundIcon">🔔</span>
+            </button>
+            <button class="btn-action-icon" id="btnManualSync" title="Sync now" style="padding:4px 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="syncSpinIcon"><path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            </button>
+            <span id="lastSyncedTime" style="font-size:11px; color:var(--text-muted); padding-left:4px;">Synced: Just now</span>
+          </div>
+          <button class="btn-primary w-auto" id="btnNewOpening">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            <span>Post Opening</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 6 Key Overall Activity Metric Cards -->
+      <div class="visitor-stats-grid-5" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom:24px;">
+        <!-- Card 1: Overall Website Users -->
+        <div class="vstat-card" style="border-left: 3.5px solid #10B981; background: linear-gradient(135deg, #F0FDF4 0%, #FFFFFF 100%);">
+          <div class="vstat-icon-wrap bg-emerald-subtle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="vstat-meta">
+            <span class="vstat-label" style="color:#065F46;">Overall Users Count</span>
+            <div class="vstat-number text-emerald" id="statOverallUsers">0</div>
+            <span class="vstat-foot" style="color:#047857;">All-time unique visitors</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Overall User Activity Total Count -->
+        <div class="vstat-card" style="border-left: 3.5px solid #2563EB; background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);">
+          <div class="vstat-icon-wrap bg-blue-subtle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="vstat-meta">
+            <span class="vstat-label" style="color:#1E40AF;">Overall Activity Count</span>
+            <div class="vstat-number" id="statOverallActivity" style="color:#1D4ED8;">0</div>
+            <span class="vstat-foot" style="color:#2563EB;">Total user visits & hits</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Total Page Views -->
+        <div class="vstat-card">
+          <div class="vstat-icon-wrap bg-indigo-subtle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div class="vstat-meta">
+            <span class="vstat-label">Total Page Views</span>
+            <div class="vstat-number" id="statGAPageViews30d">0</div>
+            <span class="vstat-foot">Cumulative page impressions</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Active Right Now -->
+        <div class="vstat-card">
+          <div class="vstat-icon-wrap" style="background:#F3E8FF;">
+            <span class="online-beacon-pulse" style="width:12px; height:12px; background:#9333EA;"></span>
+          </div>
+          <div class="vstat-meta">
+            <span class="vstat-label">Active Users Online</span>
+            <div class="vstat-number" id="statActiveUsersNow">0</div>
+            <span class="vstat-foot">Currently active on site</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Registered Candidates -->
+        <div class="vstat-card">
+          <div class="vstat-icon-wrap" style="background:#FEF3C7;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="vstat-meta">
+            <span class="vstat-label" style="color:#92400E;">Registered Candidates</span>
+            <div class="vstat-number" id="statTotalUsers" style="color:#B45309;">0</div>
+            <span class="vstat-foot" style="color:#92400E;">Verified user accounts</span>
+          </div>
+        </div>
+
+        <!-- Card 6: Job Applications -->
+        <div class="vstat-card">
+          <div class="vstat-icon-wrap" style="background:#F0FDF4;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="vstat-meta">
+            <span class="vstat-label">Job Applications</span>
+            <div class="vstat-number" id="statTotalApplications">0</div>
+            <span class="vstat-foot">Total recruitment entries</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs (Overall User Activity, Registered Users, Applications, Openings) -->
+      <div class="tabs-bar">
+        <button class="tab-btn active" id="tabAnalyticsBtn">
+          Overall User Activity (<span id="gaActiveBadge">0</span> Users)
+        </button>
+        <button class="tab-btn" id="tabUsersBtn">
+          Registered Users & Candidates (<span id="usersCountBadge">0</span>)
+        </button>
+        <button class="tab-btn" id="tabApplicationsBtn">
+          Applicant Tracking (<span id="appsCountBadge">0</span>)
+        </button>
+        <button class="tab-btn" id="tabOpeningsBtn">
+          Job Openings (<span id="openingsCountBadge">0</span>)
+        </button>
+        <button class="tab-btn" id="tabSettingsBtn">
+          ⚙️ Admin Configurations & Status
+        </button>
+      </div>
+
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <!-- TAB 1: OVERALL USER ACTIVITY BY LOCATION                          -->
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <div id="tabAnalytics">
+        <!-- Visual KPI row for User Activity -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:20px;">
+          <div class="stat-card" style="border-left:3.5px solid #2563EB;">
+            <div class="stat-label">Top Location Hub</div>
+            <div class="stat-value" id="kpiTopLocation" style="font-size:20px; font-weight:700; color:var(--text-main); margin-top:4px;">—</div>
+            <span style="font-size:12px; color:var(--text-muted);" id="kpiTopLocationSub">Primary traffic driver</span>
+          </div>
+          <div class="stat-card" style="border-left:3.5px solid #10B981;">
+            <div class="stat-label">Active Engagement Ratio</div>
+            <div class="stat-value" id="kpiEngagementRatio" style="font-size:20px; font-weight:700; color:#059669; margin-top:4px;">—</div>
+            <span style="font-size:12px; color:var(--text-muted);">Avg interactions per visitor</span>
+          </div>
+          <div class="stat-card" style="border-left:3.5px solid #F59E0B;">
+            <div class="stat-label">Total Geographical Regions</div>
+            <div class="stat-value" id="kpiTotalRegions" style="font-size:20px; font-weight:700; color:#D97706; margin-top:4px;">0</div>
+            <span style="font-size:12px; color:var(--text-muted);">Distinct visitor locations</span>
+          </div>
+        </div>
+
+        <div class="card-panel">
+          <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <div>
+              <h3 class="panel-title" style="margin:0; display:flex; align-items:center; gap:8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span>Overall User Activity by Location</span>
+              </h3>
+              <p style="font-size:12px; color:var(--text-muted); margin:4px 0 0;">Total users and overall visitor activity across countries and cities with visual traffic share.</p>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <input type="text" id="searchGeoInput" class="form-input" placeholder="Search country or city..." style="width:190px; padding:6px 12px; font-size:13px;">
+              <a href="/api/admin/export/ga-realtime-csv" class="btn-outline" style="font-size:12px; padding:6px 14px; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download Activity CSV</span>
+              </a>
+              <button class="btn-outline" id="btnRefreshGAStats" style="font-size:12px; padding:6px 14px;">
+                <span>Refresh Activity</span>
+              </button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Country</th>
+                  <th>City / Region</th>
+                  <th style="text-align:right;">Total Users</th>
+                  <th style="text-align:right;">Total Activity / Visits</th>
+                  <th style="text-align:right; width:220px;">Traffic Share (%)</th>
+                </tr>
+              </thead>
+              <tbody id="gaGeoTableBody">
+                <tr><td colspan="5" style="text-align:center; padding:24px; color:var(--text-muted);">Loading overall user activity...</td></tr>
+              </tbody>
+              <tfoot id="gaGeoTableFoot"></tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <!-- CATEGORY 2: REGISTERED CANDIDATE USERS                           -->
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <div id="tabUsers" style="display:none;">
+        <div class="card-panel">
+          <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <div>
+              <h3 class="panel-title" style="margin:0;">Registered Candidates & User Directory</h3>
+              <p style="font-size:13px; color:var(--text-muted); margin:4px 0 0;">
+                All verified user accounts registered on the Careers portal. Admin can view details and download the user directory in CSV format.
+              </p>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <input type="text" id="searchUserInput" class="form-input" placeholder="Search user name or email..." style="width:210px; padding:6px 12px; font-size:13px;">
+              <a href="/api/admin/export/users-csv" class="btn-outline" style="font-size:12px; padding:6px 14px; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download Users CSV</span>
+              </a>
+              <button class="btn-outline" id="btnRefreshUsers" style="font-size:12px; padding:6px 14px;">
+                <span>Refresh Users</span>
+              </button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>User / Candidate Name</th>
+                  <th>Email Address</th>
+                  <th>Phone Number</th>
+                  <th>Registration Date</th>
+                  <th>Applications Submitted</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <tr><td colspan="6" style="text-align:center; color:var(--text-muted); padding:32px;">Loading registered users...</td></tr>
+              </tbody>
+              <tfoot id="usersTableFoot"></tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <!-- CATEGORY 3: APPLICANT TRACKING & RESUME REVIEW                   -->
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <div id="tabApplications" style="display:none;">
+        <!-- Interactive Recruitment Pipeline Chips -->
+        <div style="display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap;" id="appPipelineChips">
+          <button class="app-chip active" data-status="ALL" onclick="filterApplicationsByStatus('ALL')">
+            All Applications (<span id="chipAllCount">0</span>)
+          </button>
+          <button class="app-chip" data-status="Submitted" onclick="filterApplicationsByStatus('Submitted')">
+            Submitted (<span id="chipSubmittedCount">0</span>)
+          </button>
+          <button class="app-chip" data-status="Under Review" onclick="filterApplicationsByStatus('Under Review')">
+            Under Review (<span id="chipReviewCount">0</span>)
+          </button>
+          <button class="app-chip" data-status="Shortlisted" onclick="filterApplicationsByStatus('Shortlisted')">
+            Shortlisted (<span id="chipShortlistedCount">0</span>)
+          </button>
+          <button class="app-chip" data-status="Interview Scheduled" onclick="filterApplicationsByStatus('Interview Scheduled')">
+            Interview Scheduled (<span id="chipInterviewCount">0</span>)
+          </button>
+          <button class="app-chip" data-status="Offer Extended" onclick="filterApplicationsByStatus('Offer Extended')">
+            Offer Extended (<span id="chipOfferCount">0</span>)
+          </button>
+          <button class="app-chip" data-status="Rejected" onclick="filterApplicationsByStatus('Rejected')">
+            Rejected (<span id="chipRejectedCount">0</span>)
+          </button>
+        </div>
+
+        <div class="card-panel">
+          <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <div>
+              <h3 class="panel-title" style="margin:0;">Candidate Applications & Recruitment Tracking</h3>
+              <p style="font-size:13px; color:var(--text-muted); margin:4px 0 0;">Review candidate submissions, inspect attached resumes, and update hiring statuses.</p>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <input type="text" id="searchAppInput" class="form-input" placeholder="Search applicant, position, email..." style="width:220px; padding:6px 12px; font-size:13px;">
+              <a href="/api/admin/export/applications-csv" class="btn-outline" style="font-size:12px; padding:6px 14px; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download Applications CSV</span>
+              </a>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Applicant Name</th>
+                  <th>Opening Applied For</th>
+                  <th>Contact Info</th>
+                  <th>Experience & Resume</th>
+                  <th>Submission Date</th>
+                  <th>Live Status (Update)</th>
+                </tr>
+              </thead>
+              <tbody id="applicationsTableBody">
+                <tr><td colspan="6" style="text-align:center; color:var(--text-muted); padding:32px;">Loading applications...</td></tr>
+              </tbody>
+              <tfoot id="applicationsTableFoot"></tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <!-- CATEGORY 4: PUBLISHED JOB OPENINGS                               -->
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <div id="tabOpenings" style="display:none;">
+        <!-- Visual KPI row for Openings -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:20px;">
+          <div class="stat-card" style="border-left:3.5px solid var(--primary); display:flex; align-items:center; justify-content:space-between;">
+            <div>
+              <div class="stat-label">Total Openings</div>
+              <div class="stat-value" id="kpiTotalOpenings">0</div>
+            </div>
+            <div style="width:40px; height:40px; border-radius:10px; background:var(--primary-subtle); display:flex; align-items:center; justify-content:center; color:var(--primary);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+          </div>
+          <div class="stat-card" style="border-left:3.5px solid var(--success); display:flex; align-items:center; justify-content:space-between;">
+            <div>
+              <div class="stat-label">Active (Live in Careers)</div>
+              <div class="stat-value" id="kpiActiveOpenings" style="color:var(--success);">0</div>
+            </div>
+            <div style="width:40px; height:40px; border-radius:10px; background:var(--success-subtle); display:flex; align-items:center; justify-content:center; color:var(--success);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+          <div class="stat-card" style="border-left:3.5px solid #8B5CF6; display:flex; align-items:center; justify-content:space-between;">
+            <div>
+              <div class="stat-label">Total Candidates Applied</div>
+              <div class="stat-value" id="kpiTotalApplicants" style="color:#7C3AED;">0</div>
+            </div>
+            <div style="width:40px; height:40px; border-radius:10px; background:#F5F3FF; display:flex; align-items:center; justify-content:center; color:#7C3AED;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-panel">
+          <div class="panel-header" style="flex-wrap:wrap; gap:12px;">
+            <div>
+              <h3 class="panel-title" style="margin:0;">Published Openings (Reflected in Careers Section)</h3>
+              <p style="font-size:12px; color:var(--text-muted); margin:4px 0 0;">Manage job roles, requirements, publish status, edit details, or delete openings.</p>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+              <input type="text" id="searchOpeningInput" class="form-input" placeholder="Search opening title..." style="width:190px; padding:6px 12px; font-size:13px;">
+              <select id="filterOpeningDept" class="form-input" style="width:150px; padding:6px 12px; font-size:13px;">
+                <option value="">All Departments</option>
+              </select>
+              <button class="btn-primary w-auto" id="btnNewOpeningInPanel" style="padding:7px 14px; font-size:13px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+                <span>Post New Opening</span>
+              </button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Job Title</th>
+                  <th>Department</th>
+                  <th>Location & Type</th>
+                  <th>Experience</th>
+                  <th>Applicants</th>
+                  <th>Status</th>
+                  <th style="text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="openingsTableBody">
+                <tr><td colspan="7" style="text-align:center; color:var(--text-muted); padding:32px;">Loading openings...</td></tr>
+              </tbody>
+              <tfoot id="openingsTableFoot"></tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <!-- CATEGORY 5: ADMIN CONFIGURATIONS & SYSTEM DIAGNOSTICS            -->
+      <!-- ═════════════════════════════════════════════════════════════════ -->
+      <div id="tabSettings" style="display:none;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:24px;">
+
+          <!-- Card 1: Admin Credentials & Security -->
+          <div class="card-panel">
+            <div class="panel-header">
+              <h3 class="panel-title" style="margin:0; display:flex; align-items:center; gap:8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Admin Credentials & Security</span>
+              </h3>
+            </div>
+            <div style="padding:24px;">
+              <p style="font-size:13px; color:var(--text-muted); margin-bottom:18px;">
+                Update your admin login username and password. Changes take effect immediately and are securely saved in MongoDB.
+              </p>
+              <div id="credAlert" class="alert-error" style="margin-bottom:14px;"></div>
+              <div id="credSuccess" style="display:none; padding:10px 14px; background:#ECFDF5; border:1px solid #A7F3D0; color:#065F46; border-radius:8px; font-size:13px; margin-bottom:14px;"></div>
+              <form id="formAdminCreds">
+                <div class="form-group">
+                  <label class="form-label" for="adminUsernameInput">Admin Username</label>
+                  <input type="text" id="adminUsernameInput" class="form-input" placeholder="admin" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="adminEmailInput">Notification Email Address</label>
+                  <input type="email" id="adminEmailInput" class="form-input" placeholder="teams@rzmt.co.in">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="adminCurrentPassInput">Current Password *</label>
+                  <input type="password" id="adminCurrentPassInput" class="form-input" placeholder="Enter current password" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="adminNewPassInput">New Password (leave blank to keep current)</label>
+                  <input type="password" id="adminNewPassInput" class="form-input" placeholder="Min. 5 characters">
+                </div>
+                <button type="submit" class="btn-primary w-auto" id="btnSaveAdminCreds">
+                  <span>Save Updated Credentials</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Card 2: GoDaddy SMTP Email Configuration & Live Tester -->
+          <div class="card-panel">
+            <div class="panel-header">
+              <h3 class="panel-title" style="margin:0; display:flex; align-items:center; gap:8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>GoDaddy SecureServer SMTP Configuration</span>
+              </h3>
+            </div>
+            <div style="padding:24px;">
+              <div style="background:#F8FAFC; border:1px solid var(--border); border-radius:10px; padding:16px; margin-bottom:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                  <span style="font-size:12px; font-weight:700; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.05em;">Active Email Engine</span>
+                  <span class="status-pill status-interview">✔ Connected & Verified</span>
+                </div>
+                <table style="width:100%; font-size:13px; border-collapse:collapse;">
+                  <tr><td style="padding:4px 0; color:var(--text-muted); width:110px;">SMTP Host:</td><td style="font-weight:600; color:var(--text-main);">smtpout.secureserver.net</td></tr>
+                  <tr><td style="padding:4px 0; color:var(--text-muted);">Port & Security:</td><td style="font-weight:600; color:var(--text-main);">465 (SSL Encrypted)</td></tr>
+                  <tr><td style="padding:4px 0; color:var(--text-muted);">Admin Mail:</td><td style="font-weight:600; color:#2563EB;">teams@rzmt.co.in</td></tr>
+                </table>
+              </div>
+
+              <h4 style="font-size:14px; font-weight:700; margin-bottom:8px;">Live SMTP Test Dispatcher</h4>
+              <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:12px;">Send an automated test email to any inbox to verify live delivery.</p>
+              
+              <div id="smtpAlert" class="alert-error" style="margin-bottom:12px;"></div>
+              <div id="smtpSuccess" style="display:none; padding:10px 14px; background:#ECFDF5; border:1px solid #A7F3D0; color:#065F46; border-radius:8px; font-size:13px; margin-bottom:12px;"></div>
+
+              <div class="form-group">
+                <label class="form-label" for="smtpTestRecipient">Recipient Email</label>
+                <div style="display:flex; gap:8px;">
+                  <input type="email" id="smtpTestRecipient" class="form-input" placeholder="mohammedkaifoutlook@gmail.com" value="teams@rzmt.co.in" style="flex:1;">
+                  <button type="button" class="btn-primary w-auto" id="btnSendSmtpTest" style="white-space:nowrap;">
+                    <span>Send Test Email</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Live System Infrastructure & Health Diagnostics -->
+          <div class="card-panel" style="grid-column: 1 / -1;">
+            <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+              <div>
+                <h3 class="panel-title" style="margin:0; display:flex; align-items:center; gap:8px;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                  <span>Live System Infrastructure Diagnostics</span>
+                </h3>
+                <p style="font-size:12px; color:var(--text-muted); margin:4px 0 0;">Real-time connectivity and status of core backend services and external APIs.</p>
+              </div>
+              <button class="btn-outline" id="btnRunDiagnostics" style="font-size:12.5px; padding:6px 14px; display:inline-flex; align-items:center; gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                <span>Re-Check Health</span>
+              </button>
+            </div>
+            <div style="padding:24px;">
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px;" id="diagGrid">
+                <!-- Diag Card 1: MongoDB -->
+                <div style="background:#F8FAFC; border:1px solid var(--border); border-radius:10px; padding:16px;">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#10B981;"></span>
+                    <strong style="font-size:14px; color:var(--text-main);">MongoDB Atlas</strong>
+                  </div>
+                  <div style="font-size:12px; color:var(--text-muted);">Database: <code style="color:var(--primary);">rzmt</code></div>
+                  <div style="font-size:12px; color:#059669; font-weight:600; margin-top:6px;">✔ Connected & Synchronized</div>
+                </div>
+
+                <!-- Diag Card 2: GA4 -->
+                <div style="background:#F8FAFC; border:1px solid var(--border); border-radius:10px; padding:16px;">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#10B981;"></span>
+                    <strong style="font-size:14px; color:var(--text-main);">Google Analytics 4</strong>
+                  </div>
+                  <div style="font-size:12px; color:var(--text-muted);">Property: <code style="color:var(--primary);">562885948</code></div>
+                  <div style="font-size:12px; color:#059669; font-weight:600; margin-top:6px;">✔ Live BetaAnalyticsDataClient</div>
+                </div>
+
+                <!-- Diag Card 3: Cloudinary -->
+                <div style="background:#F8FAFC; border:1px solid var(--border); border-radius:10px; padding:16px;">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#10B981;"></span>
+                    <strong style="font-size:14px; color:var(--text-main);">Cloudinary CDN</strong>
+                  </div>
+                  <div style="font-size:12px; color:var(--text-muted);">Cloud Name: <code style="color:var(--primary);">rzmt</code></div>
+                  <div style="font-size:12px; color:#059669; font-weight:600; margin-top:6px;">✔ Resume Uploads Active</div>
+                </div>
+
+                <!-- Diag Card 4: GoDaddy Mail -->
+                <div style="background:#F8FAFC; border:1px solid var(--border); border-radius:10px; padding:16px;">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#10B981;"></span>
+                    <strong style="font-size:14px; color:var(--text-main);">GoDaddy SMTP SSL</strong>
+                  </div>
+                  <div style="font-size:12px; color:var(--text-muted);">Port: <code style="color:var(--primary);">465</code> · SecureServer</div>
+                  <div style="font-size:12px; color:#059669; font-weight:600; margin-top:6px;">✔ SSL Authenticated</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Modal: Post / Edit Opening -->
+  <div class="modal-backdrop" id="openingModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-size:17px; font-weight:700;" id="modalTitle">Post New Opening</h3>
+        <button class="btn-action-icon" id="btnCloseModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="modalAlertBox" class="alert-error" style="margin-bottom:14px;"></div>
+        <form id="openingForm">
+          <input type="hidden" id="editOpeningId" value="">
+          <div class="form-group">
+            <label class="form-label" for="jobTitle">Job Title *</label>
+            <input type="text" id="jobTitle" class="form-input" placeholder="e.g. Edge Hardware & Embedded Systems Engineer" required>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="jobDept">Department *</label>
+              <input type="text" id="jobDept" class="form-input" placeholder="e.g. Hardware & Firmware" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="jobLoc">Location *</label>
+              <input type="text" id="jobLoc" class="form-input" placeholder="e.g. Bengaluru · Hybrid" required>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="jobType">Job Type</label>
+              <select id="jobType" class="form-input">
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Contract">Contract</option>
+                <option value="Internship">Internship</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="jobExp">Experience</label>
+              <input type="text" id="jobExp" class="form-input" placeholder="e.g. 2-5 years">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="jobDesc">Role Description *</label>
+            <textarea id="jobDesc" class="form-textarea" placeholder="Detail the role objectives, challenges, and context..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="jobReqs">Key Requirements / Skills</label>
+            <textarea id="jobReqs" class="form-textarea" placeholder="Relevant skills, technologies, experience needed..."></textarea>
+          </div>
+          <div class="form-group" id="groupStatus" style="display:none;">
+            <label class="form-label" for="jobStatus">Status</label>
+            <select id="jobStatus" class="form-input">
+              <option value="Active">Active (Visible in Careers)</option>
+              <option value="Archived">Archived (Hidden)</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <button type="button" class="btn-delete-action" id="btnDeleteInModal" style="display:none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+            <span>Delete Opening</span>
+          </button>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button type="button" class="btn-outline" id="btnCancelModal">Cancel</button>
+          <button type="button" class="btn-primary w-auto" id="btnSaveOpening">Save & Publish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // State
+    let isAdmin = false;
+    let openings = [];
+    let applications = [];
+    let users = [];
+    let inlineStatusTimer = null;
+
+    // Inline status helper (no floating popup)
+    function showToast(msg, isError = false) {
+      const el = document.getElementById("inlineStatusNote");
+      if (!el) return;
+      el.textContent = msg;
+      el.style.color = isError ? "#DC2626" : "#059669";
+      el.style.display = "block";
+      if (inlineStatusTimer) clearTimeout(inlineStatusTimer);
+      inlineStatusTimer = setTimeout(() => {
+        el.style.display = "none";
+      }, 4500);
+    }
+
+    function showModalError(msg) {
+      const box = document.getElementById("modalAlertBox");
+      if (!box) return;
+      if (!msg) {
+        box.style.display = "none";
+        box.textContent = "";
+      } else {
+        box.textContent = msg;
+        box.style.display = "block";
+      }
+    }
+
+    // Check login state
+    async function checkAuth() {
+      try {
+        const res = await fetch("/api/admin/check");
+        const data = await res.json();
+        isAdmin = data.is_admin;
+        renderView();
+        checkSystemStatus();
+      } catch (err) {
+        isAdmin = false;
+        renderView();
+        checkSystemStatus();
+      }
+    }
+
+    async function checkSystemStatus() {
+      try {
+        const res = await fetch("/api/system/status");
+        const data = await res.json();
+        const badge = document.getElementById("dbBadge");
+        if (badge) {
+          badge.innerHTML = '<span style="width:6px; height:6px; border-radius:50%; background:#10B981;"></span><span>System Online</span>';
+          badge.style.background = "#ECFDF5";
+          badge.style.color = "#059669";
+          badge.style.borderColor = "#A7F3D0";
+        }
+      } catch (e) {}
+    }
+
+    function renderView() {
+      const loginSec = document.getElementById("loginSection");
+      const dashSec = document.getElementById("dashboardSection");
+      const authAct = document.getElementById("authActions");
+
+      if (isAdmin) {
+        loginSec.style.display = "none";
+        dashSec.style.display = "block";
+        authAct.style.display = "flex";
+        loadData();
+      } else {
+        loginSec.style.display = "block";
+        dashSec.style.display = "none";
+        authAct.style.display = "none";
+      }
+    }
+
+    // Login handler
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const errBox = document.getElementById("loginError");
+      errBox.style.display = "none";
+
+      const u = document.getElementById("txtUsername").value.trim();
+      const p = document.getElementById("txtPassword").value.trim();
+
+      try {
+        const res = await fetch("/api/admin/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: u, password: p })
+        });
+        const data = await res.json();
+        if (data.ok) {
+          isAdmin = true;
+          renderView();
+          showToast("Welcome back, Admin!");
+        } else {
+          errBox.textContent = data.error || "Login failed.";
+          errBox.style.display = "block";
+        }
+      } catch (err) {
+        errBox.textContent = "Server error. Please try again.";
+        errBox.style.display = "block";
+      }
+    });
+
+    // Logout handler
+    document.getElementById("btnLogout").addEventListener("click", async () => {
+      await fetch("/api/admin/logout", { method: "POST" });
+      isAdmin = false;
+      renderView();
+      showToast("Logged out successfully.");
+    });
+
+    // Live Tracking & Auto-Refresh State
+    let liveTrackingState = {
+      enabled: true,
+      intervalSeconds: 10,
+      countdown: 10,
+      timer: null,
+      soundEnabled: true
+    };
+
+    let knownApplicationIds = new Set();
+    let isInitialAppsLoad = true;
+
+    // Web Audio Synthesizer Chime for Live Application Alerts (zero dependencies)
+    function playNotificationChime() {
+      if (!liveTrackingState.soundEnabled) return;
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.1); // A5
+        gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
+        osc.start(audioCtx.currentTime);
+        osc.stop(audioCtx.currentTime + 0.41);
+      } catch (e) {
+        console.log("Audio alert", e);
+      }
+    }
+
+    async function triggerLiveSync(isManual = false) {
+      const syncIcon = document.getElementById("syncSpinIcon");
+      if (syncIcon) syncIcon.style.animation = "spin 0.8s linear infinite";
+
+      try {
+        await Promise.all([
+          loadApplications(true),
+          loadOpenings(true),
+          loadUsers(),
+          loadGoogleAnalyticsStats()
+        ]);
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const lastSyncEl = document.getElementById("lastSyncedTime");
+        if (lastSyncEl) lastSyncEl.textContent = `Synced: ${timeStr}`;
+        if (isManual) showToast("Live data refreshed successfully.");
+      } catch (err) {
+        console.error("Live sync error:", err);
+      } finally {
+        if (syncIcon) syncIcon.style.animation = "";
+      }
+    }
+
+    function startLiveTracking() {
+      if (liveTrackingState.timer) clearInterval(liveTrackingState.timer);
+      if (liveTrackingState.intervalSeconds <= 0) {
+        const textEl = document.getElementById("textAutoRefresh");
+        if (textEl) textEl.textContent = "LIVE: PAUSED";
+        const pulse = document.getElementById("pulseAutoRefresh");
+        if (pulse) pulse.style.display = "none";
+        return;
+      }
+
+      const pulse = document.getElementById("pulseAutoRefresh");
+      if (pulse) pulse.style.display = "inline-block";
+
+      liveTrackingState.countdown = liveTrackingState.intervalSeconds;
+
+      liveTrackingState.timer = setInterval(async () => {
+        if (!liveTrackingState.enabled || !isAdmin) return;
+        liveTrackingState.countdown--;
+
+        const countDisp = document.getElementById("countSecsDisplay");
+        if (countDisp) countDisp.textContent = `${liveTrackingState.countdown}s`;
+
+        if (liveTrackingState.countdown <= 0) {
+          liveTrackingState.countdown = liveTrackingState.intervalSeconds;
+          await triggerLiveSync(false);
+        }
+      }, 1000);
+    }
+
+    // Load Openings & Applications & Users & Google Analytics & Diagnostics
+    async function loadData() {
+      await Promise.all([loadOpenings(), loadApplications(), loadUsers(), loadGoogleAnalyticsStats()]);
+      updateMetrics();
+      startLiveTracking();
+      loadSystemDiagnostics();
+    }
+
+    async function loadGoogleAnalyticsStats() {
+      try {
+        const res = await fetch("/api/admin/ga/live-stats");
+        const data = await res.json();
+        if (data.ok && data.stats) {
+          renderGoogleAnalyticsStats(data.stats);
+        }
+      } catch (err) {
+        console.error("Failed loading analytics", err);
+      }
+    }
+
+    function renderGoogleAnalyticsStats(stats) {
+      window._lastGAStats = stats;
+      const overallUsers = stats.overall_users_count || (stats.overview_30d ? stats.overview_30d.active_users : 0) || 0;
+      const overallActivity = stats.overall_activity_count || (stats.overview_30d ? stats.overview_30d.sessions : 0) || 0;
+      const totalViews = stats.total_page_views || (stats.overview_30d ? stats.overview_30d.screen_page_views : 0) || 0;
+      const onlineNow = stats.active_users_now || stats.online_now_count || 0;
+      const totalCandidates = stats.registered_users_count || 0;
+      const totalApps = stats.applications_count || 0;
+
+      const elOverallUsers = document.getElementById("statOverallUsers");
+      const elOverallActivity = document.getElementById("statOverallActivity");
+      const elViews = document.getElementById("statGAPageViews30d");
+      const elOnlineNow = document.getElementById("statActiveUsersNow");
+      const elOnlineHead = document.getElementById("statOnlineNowHeader");
+      const elTotalUsers = document.getElementById("statTotalUsers");
+      const elTotalApps = document.getElementById("statTotalApplications");
+      const elActiveBadge = document.getElementById("gaActiveBadge");
+
+      if (elOverallUsers) elOverallUsers.textContent = overallUsers.toLocaleString();
+      if (elOverallActivity) elOverallActivity.textContent = overallActivity.toLocaleString();
+      if (elViews) elViews.textContent = totalViews.toLocaleString();
+      if (elOnlineNow) elOnlineNow.textContent = onlineNow.toLocaleString();
+      if (elOnlineHead) elOnlineHead.textContent = onlineNow.toLocaleString();
+      if (elTotalUsers) elTotalUsers.textContent = Math.max(totalCandidates, users.length).toLocaleString();
+      if (elTotalApps) elTotalApps.textContent = Math.max(totalApps, applications.length).toLocaleString();
+      if (elActiveBadge) elActiveBadge.textContent = overallUsers.toLocaleString();
+
+      // Render Overall User Activity by Location Table with visual progress bars
+      const geoTbody = document.getElementById("gaGeoTableBody");
+      if (geoTbody) {
+        const geos = stats.realtime_geo || [];
+
+        // Update Geo Activity KPI cards
+        const kpiTopLoc = document.getElementById("kpiTopLocation");
+        const kpiTopSub = document.getElementById("kpiTopLocationSub");
+        const kpiRatio = document.getElementById("kpiEngagementRatio");
+        const kpiRegions = document.getElementById("kpiTotalRegions");
+
+        if (geos.length) {
+          const topG = geos[0];
+          const topName = (topG.city && topG.city !== '—') ? `${topG.city}, ${topG.country.split(',')[0]}` : topG.country;
+          if (kpiTopLoc) kpiTopLoc.textContent = topName;
+          if (kpiTopSub) kpiTopSub.textContent = `${(topG.activity_count || 0)} visits (${topG.users_count || 0} users)`;
+          if (kpiRegions) kpiRegions.textContent = geos.length;
+        } else {
+          if (kpiTopLoc) kpiTopLoc.textContent = "—";
+          if (kpiRegions) kpiRegions.textContent = "0";
+        }
+
+        if (overallUsers > 0 && overallActivity > 0) {
+          const ratio = (overallActivity / overallUsers).toFixed(1);
+          if (kpiRatio) kpiRatio.textContent = `${ratio}x visits / user`;
+        } else {
+          if (kpiRatio) kpiRatio.textContent = "1.0x";
+        }
+
+        // Filter geos by search query
+        const query = (document.getElementById("searchGeoInput")?.value || "").toLowerCase().trim();
+        let filteredGeos = geos;
+        if (query) {
+          filteredGeos = geos.filter(g => 
+            (g.country || "").toLowerCase().includes(query) ||
+            (g.city || "").toLowerCase().includes(query)
+          );
+        }
+
+        const geoTfoot = document.getElementById("gaGeoTableFoot");
+        if (!filteredGeos.length) {
+          geoTbody.innerHTML = `
+            <tr>
+              <td colspan="5" style="text-align:center; padding:32px; color:var(--text-muted);">
+                <div style="font-size:14px; font-weight:600; color:var(--text-main);">No matching user activity recorded yet.</div>
+                <div style="font-size:12px; margin-top:4px;">As visitors browse and interact with the website, overall totals will display here.</div>
+              </td>
+            </tr>
+          `;
+          if (geoTfoot) geoTfoot.innerHTML = "";
+        } else {
+          const totalActivities = geos.reduce((acc, g) => acc + (g.activity_count || g.active_users || 0), 0) || 1;
+          const sumFilteredUsers = filteredGeos.reduce((acc, g) => acc + (g.users_count || g.active_users || 0), 0);
+          const sumFilteredVisits = filteredGeos.reduce((acc, g) => acc + (g.activity_count || g.active_users || 0), 0);
+          const filteredSharePct = Math.min(100, Math.round((sumFilteredVisits / totalActivities) * 100));
+
+          geoTbody.innerHTML = filteredGeos.map(g => {
+            const uCount = g.users_count || g.active_users || 0;
+            const aCount = g.activity_count || g.active_users || 0;
+            const pct = Math.max(1, Math.round((aCount / totalActivities) * 100));
+            return `
+              <tr>
+                <td>
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#2563EB;"></span>
+                    <strong style="color:var(--text-main); font-size:13.5px;">${escapeHtml(g.country)}</strong>
+                  </div>
+                </td>
+                <td style="color:var(--text-muted); font-size:13px;">${escapeHtml(g.city || '—')}</td>
+                <td style="text-align:right; font-weight:600; font-size:13px; color:var(--text-main);">
+                  ${uCount.toLocaleString()} ${uCount === 1 ? 'user' : 'users'}
+                </td>
+                <td style="text-align:right; font-weight:700; font-size:13px; color:#2563EB;">
+                  ${aCount.toLocaleString()} ${aCount === 1 ? 'visit' : 'visits'}
+                </td>
+                <td style="text-align:right;">
+                  <div style="display:flex; align-items:center; gap:10px; justify-content:flex-end;">
+                    <div style="flex:1; max-width:110px; height:7px; background:#E2E8F0; border-radius:4px; overflow:hidden;">
+                      <div style="width:${pct}%; height:100%; background:linear-gradient(90deg, #2563EB, #38BDF8); border-radius:4px;"></div>
+                    </div>
+                    <span style="font-size:12px; font-weight:700; color:#1E40AF; min-width:34px; text-align:right;">
+                      ${pct}%
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join("");
+
+          if (geoTfoot) {
+            geoTfoot.innerHTML = `
+              <tr style="background:#F8FAFC; border-top:2px solid var(--border); font-weight:700;">
+                <td colspan="2" style="color:var(--text-main); font-size:13px;">
+                  Total (${filteredGeos.length} of ${geos.length} ${geos.length === 1 ? 'location' : 'locations'})
+                </td>
+                <td style="text-align:right; color:var(--text-main); font-size:13px;">
+                  ${sumFilteredUsers.toLocaleString()} ${sumFilteredUsers === 1 ? 'user' : 'users'}
+                </td>
+                <td style="text-align:right; color:#1D4ED8; font-size:13px;">
+                  ${sumFilteredVisits.toLocaleString()} ${sumFilteredVisits === 1 ? 'visit' : 'visits'}
+                </td>
+                <td style="text-align:right; color:#1E40AF; font-size:13px;">
+                  ${filteredSharePct}%
+                </td>
+              </tr>
+            `;
+          }
+        }
+      }
+    }
+
+    async function loadOpenings() {
+      try {
+        const res = await fetch("/api/admin/openings");
+        const data = await res.json();
+        if (data.ok) {
+          openings = data.openings || [];
+          renderOpenings();
+          updateMetrics();
+        }
+      } catch (err) {
+        console.error("Failed loading openings", err);
+      }
+    }
+
+    async function loadApplications(isSilent = false) {
+      try {
+        const res = await fetch("/api/admin/applications");
+        const data = await res.json();
+        if (data.ok) {
+          const newApps = data.applications || [];
+
+          // Live tracking: detect newly received applications and alert admin
+          if (!isInitialAppsLoad && knownApplicationIds.size > 0) {
+            const freshApps = newApps.filter(a => !knownApplicationIds.has(String(a.id)));
+            if (freshApps.length > 0) {
+              freshApps.forEach(freshApp => {
+                showToast(`🎉 New Application: ${freshApp.candidate_name} applied for "${freshApp.opening_title}"!`);
+                playNotificationChime();
+              });
+              const badge = document.getElementById("appsCountBadge");
+              if (badge) {
+                badge.style.animation = "livePulse 1s infinite alternate";
+                setTimeout(() => { badge.style.animation = ""; }, 8000);
+              }
+            }
+          }
+
+          knownApplicationIds = new Set(newApps.map(a => String(a.id)));
+          isInitialAppsLoad = false;
+          applications = newApps;
+          renderApplications();
+          updateMetrics();
+        }
+      } catch (err) {
+        console.error("Failed loading applications", err);
+      }
+    }
+
+    function updateMetrics() {
+      const openingsBadge = document.getElementById("openingsCountBadge");
+      const appsBadge = document.getElementById("appsCountBadge");
+      const usersBadge = document.getElementById("usersCountBadge");
+      const totalAppsEl = document.getElementById("statTotalApplications");
+      const totalUsersEl = document.getElementById("statTotalUsers");
+
+      if (openingsBadge) openingsBadge.textContent = openings.length;
+      if (appsBadge) appsBadge.textContent = applications.length;
+      if (usersBadge) usersBadge.textContent = users.length;
+      if (totalAppsEl) totalAppsEl.textContent = applications.length.toLocaleString();
+      if (totalUsersEl) totalUsersEl.textContent = users.length.toLocaleString();
+    }
+
+    function renderOpenings() {
+      const tbody = document.getElementById("openingsTableBody");
+      if (!tbody) return;
+
+      // Update KPI counters
+      const totalOps = openings.length;
+      const activeOps = openings.filter(o => o.status === "Active").length;
+      const totalApplicants = openings.reduce((acc, o) => acc + (o.applicant_count || 0), 0);
+
+      const elTotal = document.getElementById("kpiTotalOpenings");
+      const elActive = document.getElementById("kpiActiveOpenings");
+      const elApps = document.getElementById("kpiTotalApplicants");
+      if (elTotal) elTotal.textContent = totalOps;
+      if (elActive) elActive.textContent = activeOps;
+      if (elApps) elApps.textContent = totalApplicants;
+
+      // Populate department filter dropdown
+      const deptFilter = document.getElementById("filterOpeningDept");
+      if (deptFilter) {
+        const currentVal = deptFilter.value;
+        const depts = Array.from(new Set(openings.map(o => o.department).filter(Boolean))).sort();
+        deptFilter.innerHTML = '<option value="">All Departments</option>' +
+          depts.map(d => `<option value="${escapeHtml(d)}" ${d === currentVal ? 'selected' : ''}>${escapeHtml(d)}</option>`).join('');
+      }
+
+      // Filter openings by search and department
+      const searchVal = (document.getElementById("searchOpeningInput")?.value || "").toLowerCase().trim();
+      const filterDeptVal = document.getElementById("filterOpeningDept")?.value || "";
+
+      let filtered = openings;
+      if (searchVal) {
+        filtered = filtered.filter(o => 
+          (o.title || "").toLowerCase().includes(searchVal) ||
+          (o.department || "").toLowerCase().includes(searchVal) ||
+          (o.location || "").toLowerCase().includes(searchVal)
+        );
+      }
+      if (filterDeptVal) {
+        filtered = filtered.filter(o => o.department === filterDeptVal);
+      }
+
+      const opTfoot = document.getElementById("openingsTableFoot");
+      if (!filtered.length) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:var(--text-muted); padding:36px;">
+          <div style="font-size:15px; font-weight:600; color:var(--text-main); margin-bottom:4px;">No openings found matching your criteria</div>
+          <div style="font-size:13px; margin-bottom:14px;">Try adjusting your search query or department filter, or post a new job opening.</div>
+          <button class="btn-primary w-auto" onclick="openNewOpeningModal()" style="font-size:13px; padding:6px 14px;">+ Post New Opening</button>
+        </td></tr>`;
+        if (opTfoot) opTfoot.innerHTML = "";
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(op => {
+        const opIdSafe = escapeHtml(String(op.id));
+        const isActive = op.status === 'Active';
+        return `
+          <tr data-opening-id="${opIdSafe}">
+            <td>
+              <div style="display:flex; flex-direction:column; gap:2px;">
+                <strong style="color:var(--text-main); font-size:14.5px;">${escapeHtml(op.title)}</strong>
+                <span style="font-size:11.5px; color:var(--text-light);">Ref: #${opIdSafe.substring(0, 8)}</span>
+              </div>
+            </td>
+            <td>
+              <span style="display:inline-block; padding:3px 8px; border-radius:6px; background:#F1F5F9; color:#334155; font-size:12.5px; font-weight:500;">
+                ${escapeHtml(op.department)}
+              </span>
+            </td>
+            <td>
+              <div style="font-size:13px; color:var(--text-main);">${escapeHtml(op.location || '—')}</div>
+              <span style="font-size:11.5px; font-weight:600; color:var(--primary);">${escapeHtml(op.job_type || 'Full-time')}</span>
+            </td>
+            <td style="font-size:13px; color:var(--text-muted);">
+              ${escapeHtml(op.experience || 'Not specified')}
+            </td>
+            <td>
+              <span class="status-pill status-submitted" style="font-weight:600;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:2px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                ${op.applicant_count || 0} applicant${(op.applicant_count || 0) === 1 ? '' : 's'}
+              </span>
+            </td>
+            <td>
+              <span class="status-pill ${isActive ? 'status-interview' : 'status-rejected'}" style="font-weight:600;">
+                <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:${isActive ? '#059669' : '#64748B'}; margin-right:2px;"></span>
+                ${escapeHtml(op.status || 'Active')}
+              </span>
+            </td>
+            <td style="text-align:right;">
+              <div style="display:inline-flex; align-items:center; gap:6px;">
+                <button class="btn-edit-action" onclick="editOpening('${opIdSafe}')" title="Edit Opening Details">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  <span>Edit</span>
+                </button>
+                <button class="btn-delete-action" onclick="deleteOpening('${opIdSafe}', this)" title="Delete Opening Permanently">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2M10 11v6M14 11v6"/></svg>
+                  <span>Delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join("");
+
+      if (opTfoot) {
+        const filteredActive = filtered.filter(o => o.status === "Active").length;
+        const filteredArchived = filtered.length - filteredActive;
+        const filteredApplicants = filtered.reduce((acc, o) => acc + (o.applicant_count || 0), 0);
+        opTfoot.innerHTML = `
+          <tr style="background:#F8FAFC; border-top:2px solid var(--border); font-weight:700;">
+            <td colspan="4" style="color:var(--text-main); font-size:13px;">
+              Total (${filtered.length} of ${openings.length} ${openings.length === 1 ? 'opening' : 'openings'})
+            </td>
+            <td style="color:#1D4ED8; font-size:13px;">
+              ${filteredApplicants} applicant${filteredApplicants === 1 ? '' : 's'}
+            </td>
+            <td colspan="2" style="text-align:right; color:var(--text-muted); font-size:12.5px;">
+              Active: <strong style="color:#059669;">${filteredActive}</strong> · Archived: <strong style="color:#64748B;">${filteredArchived}</strong>
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    let currentAppStatusFilter = "ALL";
+
+    function filterApplicationsByStatus(status) {
+      currentAppStatusFilter = status;
+      const chips = document.querySelectorAll("#appPipelineChips .app-chip");
+      chips.forEach(c => {
+        if (c.getAttribute("data-status") === status) {
+          c.classList.add("active");
+        } else {
+          c.classList.remove("active");
+        }
+      });
+      renderApplications();
+    }
+    window.filterApplicationsByStatus = filterApplicationsByStatus;
+
+    function renderApplications() {
+      const tbody = document.getElementById("applicationsTableBody");
+      if (!tbody) return;
+
+      // Update Pipeline Chip Counts
+      const totalAll = applications.length;
+      const countSubmitted = applications.filter(a => a.status === "Submitted").length;
+      const countReview = applications.filter(a => a.status === "Under Review").length;
+      const countShortlisted = applications.filter(a => a.status === "Shortlisted").length;
+      const countInterview = applications.filter(a => a.status === "Interview Scheduled").length;
+      const countOffer = applications.filter(a => a.status === "Offer Extended").length;
+      const countRejected = applications.filter(a => a.status === "Rejected").length;
+
+      const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+      setEl("chipAllCount", totalAll);
+      setEl("chipSubmittedCount", countSubmitted);
+      setEl("chipReviewCount", countReview);
+      setEl("chipShortlistedCount", countShortlisted);
+      setEl("chipInterviewCount", countInterview);
+      setEl("chipOfferCount", countOffer);
+      setEl("chipRejectedCount", countRejected);
+
+      // Filter by status & search
+      const searchAppVal = (document.getElementById("searchAppInput")?.value || "").toLowerCase().trim();
+      let filteredApps = applications;
+
+      if (currentAppStatusFilter !== "ALL") {
+        filteredApps = filteredApps.filter(a => a.status === currentAppStatusFilter);
+      }
+
+      if (searchAppVal) {
+        filteredApps = filteredApps.filter(a => 
+          (a.candidate_name || "").toLowerCase().includes(searchAppVal) ||
+          (a.opening_title || "").toLowerCase().includes(searchAppVal) ||
+          (a.candidate_email || "").toLowerCase().includes(searchAppVal) ||
+          (a.candidate_phone || "").toLowerCase().includes(searchAppVal)
+        );
+      }
+
+      const appsTfoot = document.getElementById("applicationsTableFoot");
+      if (!filteredApps.length) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted); padding:36px;">
+          <div style="font-size:15px; font-weight:600; color:var(--text-main); margin-bottom:4px;">No applications found</div>
+          <div style="font-size:13px;">${applications.length === 0 ? 'No candidates have submitted applications yet.' : 'Try changing your status pipeline filter or search term.'}</div>
+        </td></tr>`;
+        if (appsTfoot) appsTfoot.innerHTML = "";
+        return;
+      }
+
+      const statuses = ["Submitted", "Under Review", "Shortlisted", "Interview Scheduled", "Offer Extended", "Rejected"];
+
+      tbody.innerHTML = filteredApps.map(app => {
+        let pillClass = "status-submitted";
+        if (app.status === "Under Review") pillClass = "status-review";
+        if (app.status === "Shortlisted") pillClass = "status-shortlisted";
+        if (app.status === "Interview Scheduled") pillClass = "status-interview";
+        if (app.status === "Offer Extended") pillClass = "status-offer";
+        if (app.status === "Rejected") pillClass = "status-rejected";
+
+        const formattedDate = new Date(app.created_at).toLocaleDateString("en-US", {
+          month: "short", day: "numeric", year: "numeric"
+        });
+        const appIdSafe = escapeHtml(String(app.id));
+
+        return `
+          <tr>
+            <td>
+              <div style="font-weight:700; color:var(--text-main); font-size:14.5px;">${escapeHtml(app.candidate_name)}</div>
+              <div style="font-size:11.5px; color:var(--text-muted); margin-top:2px;">ID: #${appIdSafe.substring(0, 8)}</div>
+            </td>
+            <td>
+              <strong style="color:var(--primary); font-size:13.5px;">${escapeHtml(app.opening_title)}</strong>
+              ${app.department ? `<div style="font-size:12px; color:var(--text-muted);">${escapeHtml(app.department)}</div>` : ''}
+            </td>
+            <td>
+              <div><a href="mailto:${escapeHtml(app.candidate_email)}" style="color:var(--primary); text-decoration:none; font-size:13px;">${escapeHtml(app.candidate_email)}</a></div>
+              <div style="font-size:12.5px; color:var(--text-muted); margin-top:2px;">${escapeHtml(app.candidate_phone || 'No phone')}</div>
+            </td>
+            <td>
+              <div style="font-weight:600; font-size:13px;">Exp: ${escapeHtml(app.experience_years || 'N/A')}</div>
+              ${app.resume_url ? `
+                <div style="margin-top:6px; display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                  <a href="${escapeHtml(app.resume_url)}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#1D4ED8; background:#EFF6FF; border:1px solid #BFDBFE; padding:5px 11px; border-radius:6px; text-decoration:none; box-shadow:0 1px 2px rgba(0,0,0,0.05); transition:all 0.2s;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <span>View Resume / CV ↗</span>
+                  </a>
+                </div>
+              ` : '<div style="font-size:11px; color:var(--text-muted); margin-top:4px;">No resume attached</div>'}
+              ${app.portfolio_link ? `<div style="margin-top:4px;"><a href="${escapeHtml(app.portfolio_link)}" target="_blank" rel="noopener" style="font-size:12px; color:var(--text-muted); text-decoration:underline;">Portfolio Link ↗</a></div>` : ''}
+              ${app.resume_notes ? `<div style="font-size:12px; color:var(--text-muted); margin-top:4px; max-width:240px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${escapeHtml(app.resume_notes)}">Note: ${escapeHtml(app.resume_notes)}</div>` : ''}
+            </td>
+            <td><span style="font-size:13px; color:var(--text-muted);">${formattedDate}</span></td>
+            <td>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <select class="select-status" onchange="updateStatus('${appIdSafe}', this.value)">
+                  ${statuses.map(s => `<option value="${s}" ${s === app.status ? 'selected' : ''}>${s}</option>`).join("")}
+                </select>
+                <span class="status-pill ${pillClass}">${escapeHtml(app.status)}</span>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join("");
+
+      if (appsTfoot) {
+        appsTfoot.innerHTML = `
+          <tr style="background:#F8FAFC; border-top:2px solid var(--border); font-weight:700;">
+            <td colspan="3" style="color:var(--text-main); font-size:13px;">
+              Total (${filteredApps.length} of ${totalAll} ${totalAll === 1 ? 'application' : 'applications'})
+            </td>
+            <td colspan="3" style="text-align:right; color:var(--text-muted); font-size:12.5px;">
+              Submitted: <strong style="color:#1D4ED8;">${countSubmitted}</strong> ·
+              Review: <strong style="color:#B45309;">${countReview}</strong> ·
+              Shortlisted/Interview: <strong style="color:#059669;">${countShortlisted + countInterview}</strong> ·
+              Offers: <strong style="color:#7C3AED;">${countOffer}</strong> ·
+              Rejected: <strong style="color:#DC2626;">${countRejected}</strong>
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    // Update Status Handler
+    async function updateStatus(appId, newStatus) {
+      try {
+        const res = await fetch(`/api/admin/applications/${encodeURIComponent(appId)}/status`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: newStatus })
+        });
+        const data = await res.json();
+        if (data.ok) {
+          showToast(`Application #${String(appId).substring(0, 8)} status updated to: ${newStatus}`);
+          await loadApplications();
+          updateMetrics();
+        } else {
+          showToast(data.error || "Failed to update status", true);
+        }
+      } catch (err) {
+        showToast("Network error updating status", true);
+      }
+    }
+
+    // Modal & Opening Form Handlers
+    const modal = document.getElementById("openingModal");
+
+    function openNewOpeningModal() {
+      showModalError("");
+      document.getElementById("modalTitle").textContent = "Post New Opening";
+      document.getElementById("editOpeningId").value = "";
+      document.getElementById("openingForm").reset();
+      document.getElementById("groupStatus").style.display = "none";
+      document.getElementById("btnSaveOpening").textContent = "Save & Publish";
+      const delBtn = document.getElementById("btnDeleteInModal");
+      if (delBtn) delBtn.style.display = "none";
+      modal.classList.add("open");
+    }
+    window.openNewOpeningModal = openNewOpeningModal;
+
+    const btnNewOpNav = document.getElementById("btnNewOpening");
+    if (btnNewOpNav) btnNewOpNav.addEventListener("click", openNewOpeningModal);
+
+    const btnNewOpPanel = document.getElementById("btnNewOpeningInPanel");
+    if (btnNewOpPanel) btnNewOpPanel.addEventListener("click", openNewOpeningModal);
+
+    document.getElementById("btnCloseModal").addEventListener("click", () => modal.classList.remove("open"));
+    document.getElementById("btnCancelModal").addEventListener("click", () => modal.classList.remove("open"));
+
+    window.editOpening = function(id) {
+      showModalError("");
+      const strId = String(id);
+      const op = openings.find(o => String(o.id) === strId);
+      if (!op) {
+        showToast("Opening not found", true);
+        return;
+      }
+      document.getElementById("modalTitle").textContent = "Edit Job Opening";
+      document.getElementById("editOpeningId").value = strId;
+      document.getElementById("jobTitle").value = op.title || "";
+      document.getElementById("jobDept").value = op.department || "";
+      document.getElementById("jobLoc").value = op.location || "";
+      document.getElementById("jobType").value = op.job_type || "Full-time";
+      document.getElementById("jobExp").value = op.experience || "";
+      document.getElementById("jobDesc").value = op.description || "";
+      document.getElementById("jobReqs").value = op.requirements || "";
+      document.getElementById("jobStatus").value = op.status || "Active";
+      document.getElementById("groupStatus").style.display = "block";
+      document.getElementById("btnSaveOpening").textContent = "Update Opening";
+
+      const delBtn = document.getElementById("btnDeleteInModal");
+      if (delBtn) {
+        delBtn.style.display = "inline-flex";
+        delBtn.dataset.confirming = "";
+        const span = delBtn.querySelector("span");
+        if (span) span.textContent = "Delete Opening";
+        delBtn.onclick = () => deleteOpening(strId, delBtn);
+      }
+      modal.classList.add("open");
+    };
+
+    window.deleteOpening = async function(id, btnEl) {
+      const strId = String(id);
+      if (btnEl && btnEl.dataset.confirming !== "1") {
+        btnEl.dataset.confirming = "1";
+        const span = btnEl.querySelector("span");
+        const prevText = span ? span.textContent : "Delete";
+        if (span) span.textContent = "Confirm Delete?";
+        btnEl.style.background = "#DC2626";
+        btnEl.style.color = "#FFFFFF";
+        setTimeout(() => {
+          if (btnEl && btnEl.dataset.confirming === "1") {
+            btnEl.dataset.confirming = "";
+            if (span) span.textContent = prevText;
+            btnEl.style.background = "";
+            btnEl.style.color = "";
+          }
+        }, 4000);
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/admin/openings/${encodeURIComponent(strId)}`, { method: "DELETE" });
+        const data = await res.json();
+        if (data.ok) {
+          modal.classList.remove("open");
+          showToast("Job opening deleted successfully!");
+          await loadOpenings();
+          updateMetrics();
+        } else {
+          showModalError(data.error || "Delete failed");
+          showToast(data.error || "Delete failed", true);
+        }
+      } catch (err) {
+        console.error("Delete error:", err);
+        showModalError("Network error while deleting opening");
+        showToast("Network error while deleting opening", true);
+      }
+    };
+
+    document.getElementById("btnSaveOpening").addEventListener("click", async () => {
+      showModalError("");
+      const id = document.getElementById("editOpeningId").value;
+      const title = document.getElementById("jobTitle").value.trim();
+      const department = document.getElementById("jobDept").value.trim();
+      const location = document.getElementById("jobLoc").value.trim();
+      const job_type = document.getElementById("jobType").value;
+      const experience = document.getElementById("jobExp").value.trim();
+      const description = document.getElementById("jobDesc").value.trim();
+      const requirements = document.getElementById("jobReqs").value.trim();
+      const status = document.getElementById("jobStatus").value;
+
+      if (!title || !department || !description) {
+        showModalError("Please fill in Title, Department, and Description.");
+        return;
+      }
+
+      const payload = { title, department, location, job_type, experience, description, requirements, status };
+
+      const saveBtn = document.getElementById("btnSaveOpening");
+      saveBtn.disabled = true;
+      saveBtn.textContent = id ? "Updating..." : "Publishing...";
+
+      try {
+        let res;
+        if (id) {
+          res = await fetch(`/api/admin/openings/${encodeURIComponent(id)}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+        } else {
+          res = await fetch("/api/admin/openings", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+        }
+        const data = await res.json();
+        if (data.ok) {
+          modal.classList.remove("open");
+          showToast(id ? "Opening updated successfully!" : "Opening published successfully!");
+          await loadOpenings();
+          updateMetrics();
+        } else {
+          showModalError(data.error || "Save failed");
+        }
+      } catch (err) {
+        console.error("Save error:", err);
+        showModalError("Error saving opening. Please check your connection.");
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = id ? "Update Opening" : "Save & Publish";
+      }
+    });
+
+    // Real-time Search and Filter Event Listeners
+    const searchOpInput = document.getElementById("searchOpeningInput");
+    if (searchOpInput) searchOpInput.addEventListener("input", renderOpenings);
+
+    const filterDeptSelect = document.getElementById("filterOpeningDept");
+    if (filterDeptSelect) filterDeptSelect.addEventListener("change", renderOpenings);
+
+    const searchAppInp = document.getElementById("searchAppInput");
+    if (searchAppInp) searchAppInp.addEventListener("input", renderApplications);
+
+    const searchGeoInp = document.getElementById("searchGeoInput");
+    if (searchGeoInp) searchGeoInp.addEventListener("input", () => {
+      // Re-render location table with query filter
+      if (window._lastGAStats) renderGoogleAnalyticsStats(window._lastGAStats);
+    });
+
+    const searchUserInp = document.getElementById("searchUserInput");
+    if (searchUserInp) searchUserInp.addEventListener("input", renderUsers);
+
+    // Load registered candidate users
+    async function loadUsers() {
+      try {
+        const res = await fetch("/api/admin/users");
+        const data = await res.json();
+        if (data.ok) {
+          users = data.users || [];
+          renderUsers();
+          const badge = document.getElementById("usersCountBadge");
+          if (badge) badge.textContent = users.length;
+          const totalUsersEl = document.getElementById("statTotalUsers");
+          if (totalUsersEl) totalUsersEl.textContent = users.length;
+        }
+      } catch (err) {
+        console.error("Failed loading users", err);
+      }
+    }
+
+    function renderUsers() {
+      const tbody = document.getElementById("usersTableBody");
+      const usersTfoot = document.getElementById("usersTableFoot");
+      if (!tbody) return;
+
+      const searchVal = (document.getElementById("searchUserInput")?.value || "").toLowerCase().trim();
+      let filteredUsers = users;
+      if (searchVal) {
+        filteredUsers = filteredUsers.filter(u => 
+          (u.name || "").toLowerCase().includes(searchVal) ||
+          (u.email || "").toLowerCase().includes(searchVal) ||
+          (u.phone || "").toLowerCase().includes(searchVal)
+        );
+      }
+
+      if (!filteredUsers.length) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted); padding:32px;">${users.length === 0 ? 'No registered candidates found.' : 'No candidates match your search.'}</td></tr>`;
+        if (usersTfoot) usersTfoot.innerHTML = "";
+        return;
+      }
+      tbody.innerHTML = filteredUsers.map(u => `
+        <tr>
+          <td>
+            <div style="font-weight:600; color:var(--text-main); font-size:14px;">${escapeHtml(u.name || "Unnamed Candidate")}</div>
+            <div style="font-size:11px; color:var(--text-muted);">ID: ${escapeHtml(String(u.id).substring(0, 8))}</div>
+          </td>
+          <td>
+            <a href="mailto:${escapeHtml(u.email)}" style="color:var(--primary); font-size:13px; text-decoration:none;">${escapeHtml(u.email)}</a>
+          </td>
+          <td style="font-size:13px; color:var(--text-main);">${escapeHtml(u.phone || "—")}</td>
+          <td style="font-size:12px; color:var(--text-muted);">${escapeHtml(u.created_at || "—")}</td>
+          <td>
+            <span style="display:inline-block; padding:3px 10px; border-radius:999px; background:#EFF6FF; color:#2563EB; font-weight:700; font-size:12px; border:1px solid #DBEAFE;">
+              ${u.application_count || 0} application${u.application_count === 1 ? '' : 's'}
+            </span>
+          </td>
+          <td>
+            <span class="status-badge status-active">Active</span>
+          </td>
+        </tr>
+      `).join("");
+
+      if (usersTfoot) {
+        const sumUserApps = filteredUsers.reduce((acc, u) => acc + (u.application_count || 0), 0);
+        usersTfoot.innerHTML = `
+          <tr style="background:#F8FAFC; border-top:2px solid var(--border); font-weight:700;">
+            <td colspan="4" style="color:var(--text-main); font-size:13px;">
+              Total (${filteredUsers.length} of ${users.length} registered ${users.length === 1 ? 'user' : 'users'})
+            </td>
+            <td style="color:#1D4ED8; font-size:13px;">
+              ${sumUserApps} application${sumUserApps === 1 ? '' : 's'}
+            </td>
+            <td style="color:#059669; font-size:12.5px;">
+              All Verified
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    const btnRefreshUsers = document.getElementById("btnRefreshUsers");
+    if (btnRefreshUsers) {
+      btnRefreshUsers.addEventListener("click", () => {
+        loadUsers();
+        showToast("Users list refreshed");
+      });
+    }
+
+    // 5-Tab Navigation switching
+    const tabAnalyticsBtn = document.getElementById("tabAnalyticsBtn");
+    const tabUsersBtn = document.getElementById("tabUsersBtn");
+    const tabApplicationsBtn = document.getElementById("tabApplicationsBtn");
+    const tabOpeningsBtn = document.getElementById("tabOpeningsBtn");
+    const tabSettingsBtn = document.getElementById("tabSettingsBtn");
+
+    const tabAnalytics = document.getElementById("tabAnalytics");
+    const tabUsers = document.getElementById("tabUsers");
+    const tabApplications = document.getElementById("tabApplications");
+    const tabOpenings = document.getElementById("tabOpenings");
+    const tabSettings = document.getElementById("tabSettings");
+
+    function switchAdminTab(targetTab) {
+      const allTabs = [tabAnalytics, tabUsers, tabApplications, tabOpenings, tabSettings];
+      const allBtns = [tabAnalyticsBtn, tabUsersBtn, tabApplicationsBtn, tabOpeningsBtn, tabSettingsBtn];
+
+      allTabs.forEach(t => { if (t) t.style.display = "none"; });
+      allBtns.forEach(b => { if (b) b.classList.remove("active"); });
+
+      if (targetTab === "analytics") {
+        if (tabAnalytics) tabAnalytics.style.display = "block";
+        if (tabAnalyticsBtn) tabAnalyticsBtn.classList.add("active");
+        loadGoogleAnalyticsStats();
+      } else if (targetTab === "users") {
+        if (tabUsers) tabUsers.style.display = "block";
+        if (tabUsersBtn) tabUsersBtn.classList.add("active");
+        loadUsers();
+      } else if (targetTab === "applications") {
+        if (tabApplications) tabApplications.style.display = "block";
+        if (tabApplicationsBtn) tabApplicationsBtn.classList.add("active");
+        loadApplications();
+      } else if (targetTab === "openings") {
+        if (tabOpenings) tabOpenings.style.display = "block";
+        if (tabOpeningsBtn) tabOpeningsBtn.classList.add("active");
+        loadOpenings();
+      } else if (targetTab === "settings") {
+        if (tabSettings) tabSettings.style.display = "block";
+        if (tabSettingsBtn) tabSettingsBtn.classList.add("active");
+        loadSystemDiagnostics();
+      }
+    }
+
+    if (tabAnalyticsBtn) tabAnalyticsBtn.addEventListener("click", () => switchAdminTab("analytics"));
+    if (tabUsersBtn) tabUsersBtn.addEventListener("click", () => switchAdminTab("users"));
+    if (tabApplicationsBtn) tabApplicationsBtn.addEventListener("click", () => switchAdminTab("applications"));
+    if (tabOpeningsBtn) tabOpeningsBtn.addEventListener("click", () => switchAdminTab("openings"));
+    if (tabSettingsBtn) tabSettingsBtn.addEventListener("click", () => switchAdminTab("settings"));
+
+    // ── Live Tracking Toolbar Controls ─────────────────────────
+    const selectRefreshInterval = document.getElementById("selectRefreshInterval");
+    if (selectRefreshInterval) {
+      const savedInterval = localStorage.getItem("rzmt_admin_sync_interval");
+      if (savedInterval !== null) {
+        selectRefreshInterval.value = savedInterval;
+        liveTrackingState.intervalSeconds = parseInt(savedInterval, 10);
+      }
+      selectRefreshInterval.addEventListener("change", (e) => {
+        const val = parseInt(e.target.value, 10);
+        liveTrackingState.intervalSeconds = val;
+        localStorage.setItem("rzmt_admin_sync_interval", val);
+        startLiveTracking();
+        showToast(val > 0 ? `Live tracking interval set to ${val}s` : "Live tracking paused");
+      });
+    }
+
+    const btnToggleSound = document.getElementById("btnToggleSound");
+    if (btnToggleSound) {
+      const savedSound = localStorage.getItem("rzmt_admin_sound");
+      if (savedSound !== null) {
+        liveTrackingState.soundEnabled = savedSound === "true";
+      }
+      const soundIcon = document.getElementById("soundIcon");
+      if (soundIcon) soundIcon.textContent = liveTrackingState.soundEnabled ? "🔔" : "🔕";
+
+      btnToggleSound.addEventListener("click", () => {
+        liveTrackingState.soundEnabled = !liveTrackingState.soundEnabled;
+        localStorage.setItem("rzmt_admin_sound", liveTrackingState.soundEnabled);
+        if (soundIcon) soundIcon.textContent = liveTrackingState.soundEnabled ? "🔔" : "🔕";
+        if (liveTrackingState.soundEnabled) playNotificationChime();
+        showToast(liveTrackingState.soundEnabled ? "Sound alerts enabled" : "Sound alerts muted");
+      });
+    }
+
+    const btnManualSync = document.getElementById("btnManualSync");
+    if (btnManualSync) {
+      btnManualSync.addEventListener("click", () => triggerLiveSync(true));
+    }
+
+    const btnToggleAutoRefresh = document.getElementById("btnToggleAutoRefresh");
+    if (btnToggleAutoRefresh) {
+      btnToggleAutoRefresh.addEventListener("click", () => {
+        liveTrackingState.enabled = !liveTrackingState.enabled;
+        const textEl = document.getElementById("textAutoRefresh");
+        const pulse = document.getElementById("pulseAutoRefresh");
+        if (liveTrackingState.enabled) {
+          if (textEl) textEl.textContent = `LIVE (${liveTrackingState.countdown}s)`;
+          if (pulse) pulse.style.display = "inline-block";
+          startLiveTracking();
+          showToast("Live tracking resumed");
+        } else {
+          if (textEl) textEl.textContent = "LIVE: PAUSED";
+          if (pulse) pulse.style.display = "none";
+          showToast("Live tracking paused");
+        }
+      });
+    }
+
+    // ── Admin Configuration Handlers ───────────────────────────
+    const formAdminCreds = document.getElementById("formAdminCreds");
+    if (formAdminCreds) {
+      formAdminCreds.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const username = document.getElementById("adminUsernameInput").value.trim();
+        const email = document.getElementById("adminEmailInput").value.trim();
+        const current_password = document.getElementById("adminCurrentPassInput").value.trim();
+        const new_password = document.getElementById("adminNewPassInput").value.trim();
+
+        const alertBox = document.getElementById("credAlert");
+        const successBox = document.getElementById("credSuccess");
+        alertBox.style.display = "none";
+        successBox.style.display = "none";
+
+        const saveBtn = document.getElementById("btnSaveAdminCreds");
+        saveBtn.disabled = true;
+        saveBtn.textContent = "Saving...";
+
+        try {
+          const res = await fetch("/api/admin/settings/credentials", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, email, current_password, new_password })
+          });
+          const data = await res.json();
+          if (data.ok) {
+            successBox.textContent = data.message || "Admin credentials updated successfully!";
+            successBox.style.display = "block";
+            document.getElementById("adminCurrentPassInput").value = "";
+            document.getElementById("adminNewPassInput").value = "";
+            showToast("Admin credentials updated successfully!");
+          } else {
+            alertBox.textContent = data.error || "Failed to update credentials.";
+            alertBox.style.display = "block";
+          }
+        } catch (err) {
+          alertBox.textContent = "Network error updating credentials.";
+          alertBox.style.display = "block";
+        } finally {
+          saveBtn.disabled = false;
+          saveBtn.textContent = "Save Updated Credentials";
+        }
+      });
+    }
+
+    const btnSendSmtpTest = document.getElementById("btnSendSmtpTest");
+    if (btnSendSmtpTest) {
+      btnSendSmtpTest.addEventListener("click", async () => {
+        const recipient = document.getElementById("smtpTestRecipient").value.trim();
+        const alertBox = document.getElementById("smtpAlert");
+        const successBox = document.getElementById("smtpSuccess");
+        alertBox.style.display = "none";
+        successBox.style.display = "none";
+
+        if (!recipient) {
+          alertBox.textContent = "Please enter an email address.";
+          alertBox.style.display = "block";
+          return;
+        }
+
+        btnSendSmtpTest.disabled = true;
+        btnSendSmtpTest.textContent = "Sending Test Email...";
+
+        try {
+          const res = await fetch("/api/admin/settings/smtp-test", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: recipient })
+          });
+          const data = await res.json();
+          if (data.ok) {
+            successBox.textContent = data.message;
+            successBox.style.display = "block";
+            showToast("SMTP test email sent successfully!");
+          } else {
+            alertBox.textContent = data.error || "Failed to dispatch test email.";
+            alertBox.style.display = "block";
+          }
+        } catch (err) {
+          alertBox.textContent = "Network error sending test email.";
+          alertBox.style.display = "block";
+        } finally {
+          btnSendSmtpTest.disabled = false;
+          btnSendSmtpTest.textContent = "Send Test Email";
+        }
+      });
+    }
+
+    async function loadSystemDiagnostics() {
+      try {
+        const res = await fetch("/api/admin/system/diagnostics");
+        const data = await res.json();
+        if (data.ok && data.diagnostics) {
+          renderSystemDiagnostics(data.diagnostics);
+        }
+      } catch (err) {
+        console.error("Diagnostics load error:", err);
+      }
+    }
+
+    function renderSystemDiagnostics(diag) {
+      const grid = document.getElementById("diagGrid");
+      if (!grid) return;
+      grid.innerHTML = `
+        <div style="background:#F8FAFC; border:1px solid var(--border); border-radius:10px; padding:16px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${diag.database.connected ? '#10B981' : '#EF4444'};"></span>
+            <strong style="font-size:14px; color:var(--text-main);">${diag.database.name}</strong>
+          </div>
+          <div style="font-size:12px; color:var(--text-muted);">Database: <code style="color:var(--primary);">${diag.database.db_name}</code></div>
+          <div style="font-size:12px; color:${diag.database.connected ? '#059669' : '#DC2626'}; font-weight:600; margin-top:6px;">
+            ${diag.database.connected ? '✔ Connected & Synchronized' : '✖ Disconnected'}
+          </div>
+        </div>
+
+        <div style="background:#F8FAFC; border:1px solid var(--border); border-radius:10px; padding:16px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${diag.analytics.connected ? '#10B981' : '#EF4444'};"></span>
+            <strong style="font-size:14px; color:var(--text-main);">${diag.analytics.name}</strong>
+          </div>
+          <div style="font-size:12px; color:var(--text-muted);">Property: <code style="color:var(--primary);">${diag.analytics.property_id}</code></div>
+          <div style="font-size:12px; color:${diag.analytics.connected ? '#059669' : '#DC2626'}; font-weight:600; margin-top:6px;">
+            ${diag.analytics.connected ? '✔ Live Client Active' : '✖ Unreachable'}
+          </div>
+        </div>
+
+        <div style="background:#F8FAFC; border:1px solid var(--border); border-radius:10px; padding:16px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${diag.media_storage.connected ? '#10B981' : '#EF4444'};"></span>
+            <strong style="font-size:14px; color:var(--text-main);">${diag.media_storage.name}</strong>
+          </div>
+          <div style="font-size:12px; color:var(--text-muted);">Cloud Name: <code style="color:var(--primary);">${diag.media_storage.cloud_name}</code></div>
+          <div style="font-size:12px; color:#059669; font-weight:600; margin-top:6px;">✔ Secure Uploads Active</div>
+        </div>
+
+        <div style="background:#F8FAFC; border:1px solid var(--border); border-radius:10px; padding:16px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#10B981;"></span>
+            <strong style="font-size:14px; color:var(--text-main);">${diag.smtp_mail.name}</strong>
+          </div>
+          <div style="font-size:12px; color:var(--text-muted);">Host: <code style="color:var(--primary);">${diag.smtp_mail.host}:${diag.smtp_mail.port}</code></div>
+          <div style="font-size:12px; color:#059669; font-weight:600; margin-top:6px;">✔ Verified SSL Relay</div>
+        </div>
+      `;
+    }
+
+    const btnRunDiagnostics = document.getElementById("btnRunDiagnostics");
+    if (btnRunDiagnostics) {
+      btnRunDiagnostics.addEventListener("click", async () => {
+        btnRunDiagnostics.disabled = true;
+        await loadSystemDiagnostics();
+        btnRunDiagnostics.disabled = false;
+        showToast("System health checked successfully.");
+      });
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    const btnRefreshGAStats = document.getElementById("btnRefreshGAStats");
+    if (btnRefreshGAStats) {
+      btnRefreshGAStats.addEventListener("click", async () => {
+        btnRefreshGAStats.disabled = true;
+        await loadGoogleAnalyticsStats();
+        btnRefreshGAStats.disabled = false;
+        showToast("Google Analytics live data refreshed");
+      });
+    }
+
+    // Init
+    checkAuth();
+  </script>
+
+  <!-- Elfsight WhatsApp Chat | Untitled WhatsApp Chat -->
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+  <div class="elfsight-app-2ced3649-99b6-4ae2-a284-0be048bb87cc" data-elfsight-app-lazy></div>
+</body>
+</html>
+
